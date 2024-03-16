@@ -7,12 +7,20 @@ import Card from './component/Card'
 
 function App() {
   let [data, setData] = useState([])
-
+  let [cart,setcart]=useState([])
   useEffect(() => {
     fetch('/List.json')
       .then((res) => res.json())
       .then((data) => setData(data))
-  }, [])
+  }, []);
+  const hendleproduct=(p)=>{
+    const exgist=cart.find((pd)=>pd.recipe_id==p.recipe_id)
+    if (!exgist) {
+        setcart([...cart,p])
+    }else{
+        alert("allrady exgist")
+    }
+  }
  
   return (
     <>
@@ -22,7 +30,7 @@ function App() {
     
       <div className='flex '>
         <div className='w-[60%] flex flex-wrap gap-3'>
-          {data.map((pd)=>(<Card pd={pd}/>))}
+          {data.map((pd)=>(<Card pd={pd} hendleproduct={hendleproduct}/>))}
         </div>
         <div className='w-[40%]'>
         <div>

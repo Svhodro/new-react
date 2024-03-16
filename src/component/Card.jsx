@@ -1,6 +1,5 @@
 import React from "react";
-function Card({pd}) {
-    
+function Card({pd,hendleproduct}) {    
 
     return (
         <>
@@ -28,7 +27,7 @@ function Card({pd}) {
                             </div>
                         </div>
                     <div className="card-actions">
-                    <button  className="btn btn-accent ">Want to Cook</button>
+                    <button onClick={(e)=>hendleproduct(pd)}  className="btn btn-accent ">Want to Cook</button>
                     </div>
                 </div>
             </div>        
